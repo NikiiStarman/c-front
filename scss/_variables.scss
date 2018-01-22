@@ -49,6 +49,8 @@ $heating: $orange;
 $on-target: $green-target-reached;
 $cooling: $light-blue;
 
+$warning: $red;
+
 $default: $lightest-grey;
 
 // FONT STACK/SIZES
@@ -79,6 +81,8 @@ $line-height-display: 48px;
 
 
 // PADDINGS
+
+$margin: 6px;
 
 $padding-tiny: 14px;
 $padding-extra-small: 22px;

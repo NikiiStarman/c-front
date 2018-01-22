@@ -4,9 +4,6 @@
 @import "utilities";
 @import "buttons";
 
-body {
-  background: #4A148C;
-}
 #root {
   height: 100%;
   display: flex;
@@ -79,11 +76,17 @@ p {
 }
 .control-box {
   display: flex;
+  flex-wrap: wrap;
+  .error {
+    width: 100%;
+    color: $warning;
+    margin: $margin;
+  }
 }
 input {
   background: #90caf9;
   flex-grow: 1;
-  margin: 6px;
+  margin: $margin;
 }
 .chat-box {
   display: flex;

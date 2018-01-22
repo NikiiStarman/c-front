@@ -7,7 +7,7 @@ export class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { user: null, connected:false, messages: [] };
+        this.state = { user: null, connected:false, messages: [], error: null };
         this.startConnection();
         console.log(this);
     }
@@ -23,7 +23,7 @@ export class App extends React.Component {
         };
         this.connection.onclose = e => {
             console.log('connection.onclose');
-            this.setState({connected: false});
+            this.setState({ user: null, connected:false, messages: [], error: 'Disconnected' });
         };
         this.connection.onmessage = message => {
             console.log(message);
@@ -66,6 +66,9 @@ export class App extends React.Component {
             case 'user':
                 this.setState({user: data.data});
                 break;
+            case 'error':
+                this.setState({error: data.text});
+                break;
             default:
                 console.log('unknown');
         }
@@ -86,9 +89,13 @@ export class App extends React.Component {
 
     render() {
         console.log('app render');
+        if (this.state.error) {
+
+        }
         if(!this.state.user) {
             return (
-                <Login onChange={(e) => this.sendMessage(e) }/>
+                <Login onChange={(e) => this.sendMessage(e) }
+                       error={ this.state.error }/>
             );
         }
         return (
