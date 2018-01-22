@@ -4,7 +4,7 @@
   "description": "Websocket chat client",
   "main": "index.js",
   "scripts": {
-    "start": "babel src src/components -d lib && webpack-dev-server --inline --progress --port 8080"
+    "start": "webpack-dev-server --inline --progress --port 8080"
   },
   "author": "",
   "license": "ISC",

@@ -33,6 +33,10 @@ module.exports = {
                 loader: 'babel-loader',
                 query: { presets: ['react', 'env'] },
             },
+            {
+                test: /\.ico$$/,
+                loader: 'file-loader?name=[name].[ext]'
+            },
             // {
             //     test: /\.html$/,
             //     loader: 'html-loader'

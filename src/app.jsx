@@ -2,6 +2,7 @@ import React from 'react';
 import Login from "./components/login";
 import Chat from "./components/chat";
 import '../scss/chat.scss';
+import '../images/favicon.ico';
 
 export class App extends React.Component {
 
