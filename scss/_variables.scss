@@ -1,0 +1,109 @@
+$fa-font-path:   "../font";
+// COLOR DEFINITIONS
+$black : #31343B;
+$darkest-gray: #3F3F3F;
+$dark-grey: #676A6F;
+$grey: #7F8289;
+$light-grey: #A8ABB2;
+$lighter-grey: #CDD0D5;
+$lightest-grey: #E5E6EA;
+
+$background-green: #EFF8E7;
+$dark-green: #6DAA28;
+$green: #80C036;
+$light-green: #80C036;
+
+$green-target-reached: #70c212;
+
+$yellow: #FCCC00;
+
+$orange: #f67f00;
+
+$red: #FB5859;
+$red-boost: #f3501e;
+
+$light-blue: #82bdff;
+$blue: #2DB4F4;
+$dark-blue: #3ab3c6;
+$darkest-blue: #314a60;
+$night-blue: #7279ab;
+
+
+$violet: #AB47BC;
+
+// ACTUAL COLORS
+
+$primary: $violet;
+$primary-dark: $dark-green;
+$primary-light: $light-green;
+
+$text-dark: $black;
+$text-grey: $dark-grey;
+$text-grey-light: $grey;
+$text-light: white;
+$text-superlight: #F2F3F5;
+
+$sidebar: $darkest-gray;
+
+$heating: $orange;
+$on-target: $green-target-reached;
+$cooling: $light-blue;
+
+$default: $lightest-grey;
+
+// FONT STACK/SIZES
+
+$font-stack: "Courier New", Courier, monospace;
+
+$font-tiny: 12px;
+$line-height-tiny: 20px;
+
+$font-small-body: 14px;
+$line-height-small-body: 24px;
+
+$font-mobile-body: 16px;
+$line-height-mobile-body: 24px;
+
+$font-body: 18px;
+$line-height-body: 28px;
+
+$font-subhead: 18px;
+$line-height-subhead: 28px;
+
+$font-headline: 24px;
+$line-height-headline: 32px;
+
+$font-display: 40px;
+$line-height-display: 48px;
+
+
+
+// PADDINGS
+
+$padding-tiny: 14px;
+$padding-extra-small: 22px;
+$padding-small: 28px;
+$padding-normal: 32px;
+$padding-medium: 40px;
+$padding-large: 80px;
+$padding-giant: 120px;
+
+$padding-mobile: 14px;
+
+
+$max-width: 1250px;
+
+// BORDER RADIUS
+$border-radius: 2px;
+
+$border-color: $lighter-grey;
+
+// BOX SHADOW
+$box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+
+
+// TRANSITIONS
+
+$linear:    0.3s linear;
+$ease-out:  0.3s ease-out;
+$quick-transition:  .15s ease-in-out

@@ -1,0 +1,28 @@
+/*noinspection CssUnknownTarget*/
+* {
+  font-family: $font-stack;
+}
+html {
+  box-sizing: border-box;
+  background: $lightest-grey;
+  color: $text-dark;
+  font-size: $font-small-body;
+  font-weight: 400;
+  height: 100%;
+  word-break: break-all;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0 auto;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  display: block;
+  color: $text-dark;
+}
+
