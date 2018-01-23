@@ -6,7 +6,7 @@ const helpers = require('./helpers');
 module.exports = {
     entry: {
         // 'polyfills': './src/polyfills.ts',
-        // 'vendor': './src/vendor.ts',
+        'vendor': './src/vendor.js',
         'app': './src/main.jsx'
     },
 
@@ -94,9 +94,9 @@ module.exports = {
         //
         // new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en|lv/),
         //
-        // new webpack.optimize.CommonsChunkPlugin({
-        //     name: ['app', 'vendor', 'polyfills']
-        // }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: ['app', 'vendor']
+        }),
 
         // new ExtractTextPlugin('style.css'),
 
