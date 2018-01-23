@@ -70,9 +70,13 @@ p {
   flex-shrink: 0;
   .error {
     width: 100%;
-    color: $warning;
     margin: $margin;
+    word-break: normal;
   }
+}
+.error {
+  color: $warning;
+  order: -1;
 }
 input {
   background: #90caf9;

@@ -26,6 +26,7 @@ export default class Login extends React.Component {
                        type="text"
                        ref="nickname"
                        placeholder="Enter your nickname"
+                       maxLength="10"
                        onKeyPress={ e => { this.onKeyPress(e) } }/>
                 <button onClick={ e => this.login() }>
                     <span>Join</span>

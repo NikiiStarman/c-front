@@ -54,11 +54,15 @@ export default class Chat extends React.Component {
                             );
                         })
                     }
+                    { this.props.error &&
+                        <p className="error">{ this.props.error }</p>
+                    }
                 </div>
                 <div className="control-box">
                     <input name="message"
                            type="text"
                            ref="message"
+                           maxLength="280"
                            onKeyPress={ e => { this.onKeyPress(e) } }/>
                     <button onClick={ e => this.sendMessage() }>
                         <span>Send</span>
