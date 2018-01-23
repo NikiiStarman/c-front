@@ -1,29 +1,20 @@
-.button {
+@function shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+button {
   cursor: pointer;
   outline: none;
   user-select: none;
   border:none;
-}
-
-@function shade($color, $percentage) {
-  @return mix(black, $color, $percentage);
-}
-.raised-button, .flat-button {
   min-width: 88px;
   height: 36px;
   border-radius: $border-radius;
-  margin: 6px;
+  margin: $margin;
   padding: 0 16px;
   font-size: $font-small-body;
   font-weight: 500;
   text-transform: uppercase;
   transition: $ease-out;
-  &:disabled{
-    color: rgba(#000, 0.26);
-  }
-}
-
-.raised-button{
   background: $primary;
   color: white;
   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2);
@@ -37,51 +28,31 @@
     color: rgba(#000, 0.26);
     background: rgba(#000, 0.12);
   }
-}
-
-.flat-button{
-  color: $primary;
-  background: #fff;
-  &:hover {
-    background: rgba(#999, 0.2);
+  .icon {
+    display: none;
   }
-  &:active {
-    background: rgba(#999, 0.4);
-  }
-  &:disabled{
-    color: rgba(#000, 0.26);
-    background: #fff;
-  }
-}
-
-.fa-button{
-  font-size: 0.5em;
-  color: $primary;
-  cursor: pointer;
-
-  &:hover {
-    color: $primary-dark;
+  @include respond-to(extra-small) {
+    min-width: 36px;
+    width: 36px;
+    padding: $margin;
+    span {
+      display: none;
+    }
+    .icon {
+      display: inline;
+      width: 100%;
+      height: 100%;
+      fill: white
+    }
   }
 }
 
-
-.success-color {
-  color: $green
-}
-
-.failed-color {
-  color: $red
-}
-
-.floating-reload{
-  position: fixed;
-  top: 54px;
-  right: 0;
-  padding: 7px;
-}
-
-.inline-link{
-  display: inline;
-  font-size: 100%;
-  font-weight: 400;
+.button--logout {
+  background: $red;
+  @include respond-to(extra-small) {
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: $margin;
+  }
 }

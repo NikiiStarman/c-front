@@ -1,4 +1,5 @@
 import React from 'react';
+import {IconEnter} from "./svg/enter";
 
 export default class Login extends React.Component {
 
@@ -26,7 +27,10 @@ export default class Login extends React.Component {
                        ref="nickname"
                        placeholder="Enter your nickname"
                        onKeyPress={ e => { this.onKeyPress(e) } }/>
-                <button className="button raised-button" onClick={ e => this.login() }>Join</button>
+                <button onClick={ e => this.login() }>
+                    <span>Join</span>
+                    <IconEnter/>
+                </button>
                 { this.props.error && <div className="error">{ this.props.error }</div> }
 
             </div>

@@ -85,6 +85,7 @@ input {
 
   flex: 1 1 auto;
   overflow-y: scroll;
+  margin: 0 $margin;
 
 
   &::-webkit-scrollbar-track

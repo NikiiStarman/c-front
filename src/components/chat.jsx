@@ -1,4 +1,6 @@
 import React from 'react';
+import {IconSend} from "./svg/send";
+import {IconExit} from "./svg/exit";
 
 export default class Chat extends React.Component {
 
@@ -58,8 +60,14 @@ export default class Chat extends React.Component {
                            type="text"
                            ref="message"
                            onKeyPress={ e => { this.onKeyPress(e) } }/>
-                    <button className="button raised-button" onClick={ e => this.sendMessage() }>Send</button>
-                    <button className="button raised-button" onClick={ e => this.logout() }>Log out</button>
+                    <button onClick={ e => this.sendMessage() }>
+                        <span>Send</span>
+                        <IconSend/>
+                    </button>
+                    <button className="button--logout" onClick={ e => this.logout() }>
+                        <span>Log out</span>
+                        <IconExit/>
+                    </button>
                 </div>
             </div>
         );
