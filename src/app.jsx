@@ -9,6 +9,7 @@ export class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = { user: null, connected:false, messages: [], error: null };
+        this.messageCount = 0;
         this.startConnection();
         console.log(this);
     }
@@ -24,11 +25,15 @@ export class App extends React.Component {
         };
         this.connection.onclose = e => {
             console.log('connection.onclose');
-            this.setState({ user: null, connected:false, messages: [], error: 'Disconnected' });
+            this.setState({ user: null, connected: false, messages: [], error: 'Disconnected' });
         };
         this.connection.onmessage = message => {
             console.log(message);
-            this.onMessage(JSON.parse(message.data))
+            this.onMessage(message.data);
+        };
+        this.connection.onerror = error => {
+            console.log(error);
+            this.setState({ user: null, connected: false, messages: [], error: 'Disconnected' });
         };
     }
 
@@ -46,22 +51,33 @@ export class App extends React.Component {
         this.setState({user: null, messages: []});
     }
 
-    onMessage(data) {
-        console.log(data);
+    onMessage(json) {
+        console.log(json);
+        let data;
+        if(json) {
+            try {
+                data = JSON.parse(json);
+            } catch(e) {
+                console.log(e);
+                return;
+            }
+        }
         console.log(data.type);
         switch (data.type) {
             case 'message':
                 this.updateMessages({
+                    key:    (this.messageCount++).toString(),
                     author: data.data.author,
-                    text: data.data.text,
-                    time: App.formattedTime(data.data.time)
+                    text:   data.data.text,
+                    time:   App.formattedTime(data.data.time)
                 });
                 break;
             case 'info':
                 this.updateMessages({
-                    isServer: true,
-                    text: data.data.text,
-                    time: App.formattedTime(data.data.time)
+                    key:        (this.messageCount++).toString(),
+                    isServer:   true,
+                    text:       data.data.text,
+                    time:       App.formattedTime(data.data.time)
                 });
                 break;
             case 'user':
@@ -73,6 +89,7 @@ export class App extends React.Component {
             default:
                 console.log('unknown');
         }
+        console.log('message count', this.messageCount);
         console.log('app.jsx state ', this.state)
     }
 

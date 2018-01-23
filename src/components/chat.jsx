@@ -40,13 +40,13 @@ export default class Chat extends React.Component {
                         this.props.messages.map(message => {
                             if (message.isServer) {
                                 return (
-                                    <p className="info-message">
+                                    <p key={message.key} className="info-message">
                                         { message.time + ' *** ' } <span>{ message.text }</span>
                                     </p>
                                 )
                             }
                             return (
-                                <p>
+                                <p key={message.key}>
                                     { message.time + ' <' + message.author + '> ' } <span>{ message.text }</span>
                                 </p>
                             );
