@@ -7,16 +7,16 @@ button {
   user-select: none;
   border:none;
   min-width: 88px;
-  height: 36px;
+  height: $input-height;
   border-radius: $border-radius;
   margin: $margin;
   padding: 0 16px;
-  font-size: $font-small-body;
+  font-size: $font-medium;
   font-weight: 500;
   text-transform: uppercase;
   transition: $ease-out;
   background: $primary;
-  color: white;
+  color: $text-light;
   box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2);
   &:hover {
     background: shade($primary, 12%);
@@ -32,8 +32,8 @@ button {
     display: none;
   }
   @include respond-to(extra-small) {
-    min-width: 36px;
-    width: 36px;
+    min-width: $input-height;
+    width: $input-height;
     padding: $margin;
     span {
       display: none;
@@ -42,7 +42,7 @@ button {
       display: inline;
       width: 100%;
       height: 100%;
-      fill: white
+      fill: $text-light
     }
   }
 }
