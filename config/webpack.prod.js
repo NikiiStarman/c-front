@@ -1,10 +1,14 @@
-let webpack = require('webpack');
-let webpackMerge = require('webpack-merge');
-let ExtractTextPlugin = require('extract-text-webpack-plugin');
-let commonConfig = require('./webpack.common.js');
-let helpers = require('./helpers');
+const webpack = require('webpack');
+const webpackMerge = require('webpack-merge');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const commonConfig = require('./webpack.common.js');
+const helpers = require('./helpers');
 
-const ENV = process.env.NODE_ENV = process.env.ENV = 'production';
+const host = 'ws://127.0.0.1:1337';
+const ENV = process.env.NODE_ENV = process.env = {
+    ENV: 'production',
+    host: host
+};
 
 module.exports = webpackMerge(commonConfig, {
     devtool: 'source-map',
@@ -18,7 +22,7 @@ module.exports = webpackMerge(commonConfig, {
 
     plugins: [
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.optimize.UglifyJsPlugin({ // https://github.com/angular/angular/issues/10618
+        new webpack.optimize.UglifyJsPlugin({
             mangle: {
                 keep_fnames: true
             }
@@ -31,7 +35,7 @@ module.exports = webpackMerge(commonConfig, {
         }),
         new webpack.LoaderOptionsPlugin({
             htmlLoader: {
-                minimize: false // workaround for ng2
+                minimize: false
             }
         })
     ]

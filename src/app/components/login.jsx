@@ -7,15 +7,19 @@ export default class Login extends React.Component {
         super(props);
     };
 
-    login() {
-        if (this.props.onChange) {
-            this.props.onChange(this.refs.nickname.value);
-        }
+    componentDidMount(){
+        this.refs.nickname.focus();
     }
 
     onKeyPress(e) {
         if (e.key === 'Enter') {
             this.login();
+        }
+    }
+
+    login() {
+        if (this.props.onChange) {
+            this.props.onChange(this.refs.nickname.value);
         }
     }
 
@@ -33,7 +37,6 @@ export default class Login extends React.Component {
                     <IconEnter/>
                 </button>
                 { this.props.error && <div className="error">{ this.props.error }</div> }
-
             </div>
         );
     }

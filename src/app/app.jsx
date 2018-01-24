@@ -2,28 +2,25 @@ import React from 'react';
 import Login from "./components/login";
 import Chat from "./components/chat";
 
+const host = process.env.host || 'ws://127.0.0.1:1337';
+
 export class App extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = { user: null, connected: false, messages: [], error: null };
         this.messageCount = 0;
-        this.startConnection();
-        console.log(this);
     }
 
     startConnection(message) {
-        this.connection = new WebSocket('ws://127.0.0.1:1337');
+        this.connection = new WebSocket(host);
         this.connection.onopen = e => {
-            console.log('connection.onopen');
             this.setState({connected: true, error: null});
             if(message) {
                 this.sendMessage(message);
             }
         };
         this.connection.onclose = e => {
-            console.log('connection.onclose');
-            console.log(e);
             let errorMessage = 'Disconnected';
             switch (e.code) {
                 case 1006:
@@ -37,21 +34,17 @@ export class App extends React.Component {
             this.setState({ user: null, connected: false, messages: [], error: errorMessage });
         };
         this.connection.onmessage = message => {
-            console.log(message);
             this.onMessage(message.data);
         };
         this.connection.onerror = error => {
-            console.log(error);
             this.setState({ user: null, connected: false, messages: [], error: 'Connection error' });
         };
-        console.log('app.jsx state ', this.state)
     }
 
     sendMessage(message) {
         if (!this.state.connected) {
             return this.startConnection(message);
         }
-        console.log(this.connection);
         this.setState({error: null});
         this.connection.send(message);
     }
@@ -62,7 +55,6 @@ export class App extends React.Component {
     }
 
     onMessage(json) {
-        console.log(json);
         let data;
         if(json) {
             try {
@@ -72,7 +64,6 @@ export class App extends React.Component {
                 return;
             }
         }
-        console.log(data.type);
         switch (data.type) {
             case 'message':
                 this.updateMessages({
@@ -99,8 +90,6 @@ export class App extends React.Component {
             default:
                 console.log('unknown');
         }
-        console.log('message count', this.messageCount);
-        console.log('app.jsx state ', this.state)
     }
 
     updateMessages(message) {
@@ -116,7 +105,6 @@ export class App extends React.Component {
     }
 
     render() {
-        console.log('app render');
         if (this.state.error) {
 
         }

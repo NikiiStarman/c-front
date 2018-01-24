@@ -12,6 +12,12 @@ export default class Chat extends React.Component {
         this.refs.message.focus();
     }
 
+    onKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.sendMessage();
+        }
+    }
+
     sendMessage() {
         if (this.props.onChange) {
             this.props.onChange(this.refs.message.value);
@@ -20,20 +26,12 @@ export default class Chat extends React.Component {
     }
 
     logout(e) {
-        console.log(e);
         if (this.props.logout) {
             this.props.logout();
         }
     }
 
-    onKeyPress(e) {
-        if (e.key === 'Enter') {
-            this.sendMessage();
-        }
-    }
-
     render() {
-        console.log(this.props);
         return (
             <div className="container">
                 <div className="chat-box">
